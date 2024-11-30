@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Minh họa thuật toán trên đồ thị</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+
+<body>
+    <h1>Minh họa thuật toán trên đồ thị</h1>
+    <div id="container">
+        <div id="graph">
+            <h2>Đồ thị (Graph)</h2>
+            <div id="graph-container"></div>
+        </div>
+
+        <div id="sidebar">
+            <div id="stack">
+                <h2>Ngăn xếp (Stack)</h2>
+                <ul id="stack-list"></ul>
+            </div>
+
+            <div id="adjacency-list">
+                <h2>Danh sách kề (Adjacency List)</h2>
+                <div id="list"></div>
+            </div>
+        </div>
+    </div>
+
+    <button id="run-btn">Chạy thuật toán</button>
+    <button id="create-graph-btn">Tạo đồ thị</button>
+
+    <div id="create-graph-modal">
+        <div class="modal-content">
+            <h2>Tạo đồ thị</h2>
+            <label for="nodes-edges">Nhập số đỉnh (N) và số cạnh (M):</label>
+            <input type="text" id="nodes-edges" placeholder="N M">
+            <label for="edges">Nhập các cạnh tương ứng:</label>
+            <textarea id="edges" placeholder="Mỗi dòng gồm một cạnh tương ứng của 2 đỉnh"></textarea>
+            <button id="submit-graph-btn">Tạo</button>
+            <button id="close-modal-btn">Thoát</button>
+        </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+
+</html>
