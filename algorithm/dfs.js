@@ -5,10 +5,33 @@ function updateAdjacencyList(nodeId, adjacencyList) {
     const existingEntry = list.select(`#adj-list-${nodeId}`);
 
     if (existingEntry.empty()) {
-        const neighbors = adjacencyList[nodeId].join(", ");
-        list.append("p")
-            .attr("id", `adj-list-${nodeId}`)
-            .text(`đỉnh ${nodeId} kề đỉnh ${neighbors}`);
+        const paragraph = list.append("p").attr("id", `adj-list-${nodeId}`);
+        paragraph.append("span")
+            .style("color", "black")
+            .text("Đỉnh ");
+
+        // Thêm số nodeId với màu xanh dương và in đậm
+        paragraph.append("span")
+            .style("color", "blue")
+            .style("font-weight", "bold")
+            .text(`${nodeId} `);
+
+        // Thêm danh sách các đỉnh kề với màu vàng và in đậm
+        adjacencyList[nodeId].forEach((neighbor, index) => {
+            if (index === 0) {
+                paragraph.append("span")
+                    .style("color", "black")
+                    .text("kề đỉnh ");
+            } else {
+                paragraph.append("span")
+                    .style("color", "black")
+                    .text(", ");
+            }
+            paragraph.append("span")
+                .style("color", "red")
+                .style("font-weight", "bold")
+                .text(`${neighbor}`);
+        });
     }
 }
 
