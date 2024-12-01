@@ -64,7 +64,7 @@ h1 {
     background: #fff;
     position: relative;
     border-radius: 10px;
-    overflow: auto;
+    overflow: hidden;
 }
 
 #stack-list {
@@ -97,19 +97,40 @@ h1 {
     padding: 5px;
 }
 
-#run-btn,
+#run-btn {
+    margin-top: 20px;
+    padding: 12px 25px;
+    font-size: 16px;
+    background: linear-gradient(135deg, #43a047, #66bb6a); 
+    border-radius: 12px; 
+    border: none; 
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease; 
+}
+
+#run-btn:hover {
+    background: #4ef156;
+    transform: scale(1.05);
+}
+
 #create-graph-btn {
     margin-top: 20px;
     padding: 12px 25px;
     font-size: 16px;
-    background: linear-gradient(135deg, #43a047, #66bb6a);
-    border-radius: 8px;
+    background: linear-gradient(135deg, #ffeb3b, #fbc02d);
+    border-radius: 12px;
+    border: none;
+    color: black;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
 }
 
-#run-btn:hover,
 #create-graph-btn:hover {
-    background: #388e3c;
+    background: #f57f17;
+    transform: scale(1.05); 
 }
+
 
 #edges
 {
@@ -127,17 +148,20 @@ h1 {
 }
 
 #close-modal-btn {
-    background-color: #f44336;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 8px;
+    margin-top: 20px;
+    padding: 12px 25px;
+    font-size: 16px;
+    background: linear-gradient(135deg, #f08e87, #f08e87);
+    border-radius: 12px;
     border: none;
+    color: white;
     cursor: pointer;
-    transition: background 0.3s ease;
+    transition: background 0.3s ease, transform 0.3s ease;
 }
 
 #close-modal-btn:hover {
-    background-color: #e53935;
+    background: #ff5a5a;
+    transform: scale(1.05);
 }
 
 #create-graph-modal {
@@ -168,14 +192,21 @@ h1 {
     transition: background-color 0.3s ease;
 }
 
-
 #submit-graph-btn {
-    background-color: #51faae;
+    margin-top: 20px;
+    padding: 12px 25px;
+    font-size: 16px;
+    background: linear-gradient(135deg, #75f379, #75f379);
+    border-radius: 12px;
+    border: none;
     color: white;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
 }
 
 #submit-graph-btn:hover {
-    background-color: #44ffab;
+    background: #2ef738;
+    transform: scale(1.05);
 }
 
 h2 {
@@ -224,50 +255,31 @@ label {
 
 /* Kiểu chung cho tất cả các nút */
 button {
-    outline: none;
-    cursor: pointer;
     border: none;
-    padding: 0.9rem 2rem;
-    margin: 0;
+    color: #fff;
+    background-image: none;
+    border-radius: 20px;
     font-family: inherit;
-    font-size: inherit;
-    position: relative;
-    display: inline-block;
-    letter-spacing: 0.05rem;
-    font-weight: 700;
     font-size: 17px;
-    border-radius: 500px;
-    overflow: hidden;
-    background: #66ff66;
-    color: ghostwhite;
-    transition: background 0.3s ease, transform 0.2s ease, color 0.4s;
-}
-
-button span {
-    position: relative;
-    z-index: 10;
+    padding: 0.6em 1.5em;
+    text-align: center; 
+    display: inline-block; 
+    width: auto; 
 }
 
 button:hover {
-    transform: translateY(-3px);
+    -webkit-animation: pulse 2s infinite;
+    animation: pulse512 1.5s infinite;
 }
 
-button:hover span {
-    color: black;
-}
-
-button::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 120%;
-    height: 100%;
-    z-index: 0;
-    transform: skew(30deg);
-    transition: transform 0.4s cubic-bezier(0.3, 1, 0.8, 1);
-}
-
-button:hover::before {
-    transform: translate3d(100%, 0, 0);
+@keyframes pulse512 {
+    0% {
+        box-shadow: 0 0 0 0 #05bada66;
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgb(218 103 68 / 0%);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgb(218 103 68 / 0%);
+    }
 }
