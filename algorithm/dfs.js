@@ -50,6 +50,10 @@ function updateStack() {
 export async function runDFS(adjacencyList) {
     const visited = new Set();
 
+    // Vô hiệu hóa nút "Chạy thuật toán" và "Tạo đồ thị" khi bắt đầu
+    document.getElementById("run-btn").disabled = true;
+    document.getElementById("create-graph-btn").disabled = true;
+
     for (let nodeId in adjacencyList) {
         nodeId = Number(nodeId);
 
@@ -58,6 +62,9 @@ export async function runDFS(adjacencyList) {
             await dfs(nodeId, adjacencyList, visited);
         }
     }
+    // Bật lại khi đã chạy xong
+    document.getElementById("run-btn").disabled = false;
+    document.getElementById("create-graph-btn").disabled = false;
 }
 
 async function dfs(nodeId, adjacencyList, visited) {
@@ -104,8 +111,10 @@ async function dfs(nodeId, adjacencyList, visited) {
     updateStack(); 
     removeAdjacencyList(nodeId);
 
-    if (stack.length === 0) 
+    if (stack.length === 0) {
+        document.getElementById("run-btn").disabled = false;
         document.getElementById("create-graph-btn").disabled = false;
+    }
 }
 
 export { dfs, updateStack, updateAdjacencyList, removeAdjacencyList };
