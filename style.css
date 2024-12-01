@@ -21,7 +21,7 @@ h1 {
 }
 
 #graph {
-    width: 65%;
+    width: 75%;
     background: linear-gradient(135deg, #ffffff, #e3f2fd);
     border: 2px solid #3f51b5;
     border-radius: 8px;
@@ -32,7 +32,7 @@ h1 {
 #sidebar {
     display: flex;
     flex-direction: column;
-    width: 30%;
+    width: 25%;
     gap: 20px;
 }
 
@@ -68,21 +68,37 @@ h1 {
 }
 
 #stack-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+    display: flex;
+    flex-direction: column-reverse; 
+    align-items: center; 
+    padding: 10px;
+}
+
+@keyframes appear-effect {
+    0% {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1; 
+    }
 }
 
 #stack-list li {
-    border: 2px solid #64b5f6;
-    margin: 8px 0;
-    padding: 10px;
-    background: linear-gradient(135deg, #f1f8e9, #bbdefb);
+    display: block; 
+    width: 50%; 
+    border: 1px solid #64b5f6; 
+    margin: 5px 0; 
+    padding: 10px; 
+    background: linear-gradient(135deg, #f1f8e9, #bbdefb); 
+    font-size: 20px; 
     font-weight: bold;
-    border-radius: 5px;
+    border-radius: 5px; 
     text-align: center;
     color: #333;
     transition: background 0.3s ease, transform 0.2s ease;
+    animation: appear-effect 1s ease-out;
 }
 
 #stack-list li:hover {
