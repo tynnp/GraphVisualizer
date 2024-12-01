@@ -121,7 +121,7 @@ h1 {
     background: linear-gradient(135deg, #ffeb3b, #fbc02d);
     border-radius: 12px;
     border: none;
-    color: black;
+    color: rgb(255, 255, 255);
     cursor: pointer;
     transition: background 0.3s ease, transform 0.3s ease;
 }
