@@ -74,17 +74,6 @@ h1 {
     padding: 10px;
 }
 
-@keyframes appear-effect {
-    0% {
-        transform: translateY(-50px);
-        opacity: 0;
-    }
-    100% {
-        transform: translateY(0);
-        opacity: 1; 
-    }
-}
-
 #stack-list li {
     display: block; 
     width: 50%; 
@@ -98,7 +87,6 @@ h1 {
     text-align: center;
     color: #333;
     transition: background 0.3s ease, transform 0.2s ease;
-    animation: appear-effect 1s ease-out;
 }
 
 #stack-list li:hover {
@@ -111,6 +99,59 @@ h1 {
     text-align: left;
     font-size: 14px;
     padding: 5px;
+}
+
+.adj-item {
+    display: inline-block; 
+    padding: 10px; 
+    margin: 5px; 
+    border: 1px solid #64b5f6;
+    background: linear-gradient(135deg, #f1f8e9, #bbdefb);
+    font-size: 16px;
+    font-weight: bold; 
+    border-radius: 5px;
+    color: #333; 
+    text-align: center;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.adj-item:hover {
+    background: #64b5f6;
+    color: white;
+    transform: scale(1.05);
+}
+
+#adjacency-list p {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin: 10px 0;
+}
+
+#adjacency-list .adj-header {
+    font-weight: bold;
+    color: blue;
+    margin-right: 10px; 
+}
+
+.adj-header-box {
+    display: inline-block;
+    padding: 10px; 
+    margin: 5px; 
+    border: 1px solid #64b5f6; 
+    background: linear-gradient(135deg, #e3f2fd, #bbdefb); 
+    font-size: 16px; 
+    font-weight: bold;
+    border-radius: 5px;
+    color: #333;
+    text-align: center;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.adj-header-box:hover {
+    background: #0800ff; 
+    color: white; 
+    transform: scale(1.05); 
 }
 
 #run-btn {
@@ -377,4 +418,34 @@ button:hover {
         width: 100%;
         max-width: 250px;
     }
+}
+
+@keyframes appear-effect {
+    0% {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.new-item {
+    animation: appear-effect 1s ease-out;
+}
+
+@keyframes slide-in {
+    0% {
+        transform: translateX(-50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.adj-item.new {
+    animation: slide-in 0.5s ease-out;
 }
