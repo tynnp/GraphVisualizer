@@ -167,7 +167,7 @@ h1 {
     position: fixed;
     top: 50%;
     left: 50%;
-    border: 2px solid #E0E0E0; 
+    border: 2px solid #D0D0D0; 
     transform: translate(-50%, -50%);
     background-color: white;
     padding: 10px;
@@ -229,7 +229,7 @@ h1 {
 }
 
 .modal-content input {
-    border: 2px solid #e7e7e7;
+    border: 2px solid #D0D0D0;
     border-radius: 10px;
     outline: none;
 }
@@ -244,7 +244,7 @@ h1 {
     min-height: 150px;
     max-height: 300px;
     padding: 15px;
-    border: 2px solid #e7e7e7;
+    border: 2px solid #D0D0D0;
     border-radius: 10px;
     resize: vertical;
     font-size: 16px;
