@@ -6,32 +6,21 @@ function updateAdjacencyList(nodeId, adjacencyList) {
 
     if (existingEntry.empty()) {
         const paragraph = list.append("p").attr("id", `adj-list-${nodeId}`);
-        paragraph.append("span")
-            .style("color", "black")
-            .text("Đỉnh ");
 
-        // Thêm số nodeId với màu xanh dương và in đậm
         paragraph.append("span")
-            .style("color", "blue")
-            .style("font-weight", "bold")
-            .text(`${nodeId} `);
+            .attr("class", "adj-header-box")
+            .text(`Đỉnh ${nodeId} kề:`);
 
-        // Thêm danh sách các đỉnh kề với màu vàng và in đậm
-        adjacencyList[nodeId].forEach((neighbor, index) => {
-            if (index === 0) {
-                paragraph.append("span")
-                    .style("color", "black")
-                    .text("kề đỉnh ");
-            } else {
-                paragraph.append("span")
-                    .style("color", "black")
-                    .text(", ");
-            }
-            paragraph.append("span")
-                .style("color", "red")
-                .style("font-weight", "bold")
-                .text(`${neighbor}`);
+        adjacencyList[nodeId].forEach((neighbor) => {
+            const item = paragraph.append("span")
+                .attr("class", "adj-item new") 
+                .text(neighbor);
+
+            setTimeout(() => item.classed("new", false), 500);
         });
+
+        const adjacencyListElement = document.getElementById("adjacency-list");
+        adjacencyListElement.scrollTop = adjacencyListElement.scrollHeight;
     }
 }
 
@@ -41,10 +30,34 @@ function removeAdjacencyList(nodeId) {
 
 function updateStack() {
     const stackList = d3.select("#stack-list");
-    stackList.html("");
-    stack.forEach((item) => {
-        stackList.append("li").text(item);
+    stackList.html(""); 
+
+    stack.forEach((item, index) => {
+        const li = stackList.append("li")
+            .text(item);
+
+        if (index === stack.length - 1) {
+            li.attr("class", "new-item");
+        }
     });
+
+    setTimeout(() => {
+        stackList.selectAll("li").classed("new-item", false);
+    }, 1000);
+}
+
+function removeFromStack() {
+    if (stack.length > 0) {
+        stack.pop(); 
+        updateStack(); 
+
+        const stackList = d3.select("#stack-list");
+        stackList.selectAll("li").attr("class", "rise-up");
+
+        setTimeout(() => {
+            stackList.selectAll("li").classed("rise-up", false);
+        }, 500); 
+    }
 }
 
 export async function runDFS(adjacencyList) {
