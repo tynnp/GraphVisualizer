@@ -28,7 +28,6 @@ function removeAdjacencyList(nodeId) {
     d3.select(`#adj-list-${nodeId}`).remove();
 }
 
-
 function updateQueue() {
     const queueList = d3.select("#queue-list");
     queueList.html(""); 
@@ -90,42 +89,21 @@ async function bfs(startNodeId, adjacencyList, visited) {
 
     visited.add(startNodeId);
     updateAdjacencyList(startNodeId, adjacencyList);
+    d3.select(`#node-${startNodeId} circle`)
+        .transition()
+        .duration(500)
+        .attr("stroke", "dodgerblue");
+
+    d3.select(`#node-${startNodeId} text`)
+        .transition()
+        .duration(500)
+        .attr("fill", "dodgerblue");
+
+    await new Promise(resolve => setTimeout(resolve, 1000));
 
     while (queue.length > 0) {
         const nodeId = queue[0];
         console.log(`Duyệt đến ${nodeId}`);
-
-        d3.select(`#node-${nodeId} circle`)
-            .transition()
-            .duration(500)
-            .attr("stroke", "dodgerblue");
-
-        d3.select(`#node-${nodeId} text`)
-            .transition()
-            .duration(500)
-            .attr("fill", "dodgerblue");
-
-        await new Promise(resolve => setTimeout(resolve, 1000));
-
-        for (const neighbor of adjacencyList[nodeId]) {
-            if (!visited.has(neighbor)) {
-                console.log(`Hàng xóm ${neighbor} chưa được thăm`);
-                visited.add(neighbor);
-                queue.push(neighbor);
-                updateQueue();
-                updateAdjacencyList(neighbor, adjacencyList);
-
-                d3.select(`#node-${neighbor} circle`)
-                    .transition()
-                    .duration(500)
-                    .attr("stroke", "limegreen");
-
-                d3.select(`#node-${neighbor} text`)
-                    .transition()
-                    .duration(500)
-                    .attr("fill", "limegreen");
-            }
-        }
 
         d3.select(`#node-${nodeId} circle`)
             .transition()
@@ -137,12 +115,50 @@ async function bfs(startNodeId, adjacencyList, visited) {
             .duration(500)
             .attr("fill", "limegreen");
 
+        await new Promise(resolve => setTimeout(resolve, 1000));
+
+        for (const neighbor of adjacencyList[nodeId]) {
+            if (!visited.has(neighbor)) {
+                console.log(`Hàng xóm ${neighbor} chưa được thăm`);
+                visited.add(neighbor);
+
+                queue.push(neighbor);
+                updateQueue();
+                updateAdjacencyList(neighbor, adjacencyList);
+
+                d3.select(`#node-${neighbor} circle`)
+                    .transition()
+                    .duration(500)
+                    .attr("stroke", "dodgerblue");
+
+                d3.select(`#node-${neighbor} text`)
+                    .transition()
+                    .duration(500)
+                    .attr("fill", "dodgerblue");
+
+                await new Promise(resolve => setTimeout(resolve, 1000));
+
+                d3.select(`#node-${neighbor} circle`)
+                    .transition()
+                    .duration(500)
+                    .attr("stroke", "limegreen");
+
+                d3.select(`#node-${neighbor} text`)
+                    .transition()
+                    .duration(500)
+                    .attr("fill", "limegreen");
+
+                await new Promise(resolve => setTimeout(resolve, 1000));
+            }
+        }
+
         removeFromQueue();
         removeAdjacencyList(nodeId);
         await new Promise(resolve => setTimeout(resolve, 1000));
     }
 }
-// khi chạy xong thuật toán đưa màu của các node về ban đầu
+
+// Khi chạy xong thuật toán, đưa màu của các node về ban đầu
 function resetNodes() {
     d3.selectAll("circle")
         .transition()
@@ -156,4 +172,4 @@ function resetNodes() {
         .attr("fill", "black");
 }
 
-export { bfs, updateQueue, updateAdjacencyList, removeAdjacencyList};
+export { bfs, updateQueue, updateAdjacencyList, removeAdjacencyList };
