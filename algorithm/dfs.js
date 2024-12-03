@@ -75,6 +75,8 @@ export async function runDFS(adjacencyList) {
             await dfs(nodeId, adjacencyList, visited);
         }
     }
+
+    resetNodes();
     // Bật lại khi đã chạy xong
     document.getElementById("run-btn").disabled = false;
     document.getElementById("create-graph-btn").disabled = false;
@@ -128,6 +130,19 @@ async function dfs(nodeId, adjacencyList, visited) {
         document.getElementById("run-btn").disabled = false;
         document.getElementById("create-graph-btn").disabled = false;
     }
+}
+// khi chạy xong thuật toán đưa màu của các node về ban đầu
+function resetNodes() {
+    d3.selectAll("circle")
+        .transition()
+        .duration(500)
+        .attr("stroke", "black")
+        .attr("fill", "white");
+
+    d3.selectAll("text")
+        .transition()
+        .duration(500)
+        .attr("fill", "black");
 }
 
 export { dfs, updateStack, updateAdjacencyList, removeAdjacencyList };
