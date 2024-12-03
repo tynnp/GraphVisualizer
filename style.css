@@ -486,29 +486,42 @@ button:hover {
     left: 8%;
     display: flex;
     align-items: center;
-    border-radius: 20px;
+    border-radius: 30px;
     background-color: #ffffff;
     color: #fff;
     margin: 20px auto;
     width: var(--container_width);
     overflow: hidden;
     border: 2px solid #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
 }
-  
+
+.radio-input:hover {
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-3px); 
+}
+
 .radio-input label {
     width: 100%;
-    padding: 10px;
+    padding: 8px;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1;
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: -1px;
     font-size: 12px;
-    transition: color 0.3s ease-in-out;
+    color: #777;
+    border-radius: 25px;
+    transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
   
+.radio-input label:hover {
+    color: #333;
+}
+
 .selection {
     display: none;
     position: absolute;
