@@ -1,5 +1,5 @@
 import { runDFS } from './algorithm/dfs.js';
-
+import { runBFS } from './algorithm/bfs.js';
 let adjacencyList = {};  
 
 export function createGraph(N, edges) {
@@ -151,6 +151,12 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("Load lại trang!");
     adjacencyList = createGraph();  
 });
+// Xử lý không cho thay đổi thuật toán khi đang chạy
+function toggleRadioButtons(enabled) {
+    radioButtons.forEach(radio => {
+        radio.disabled = !enabled;
+    });
+}
 
 document.getElementById("run-btn").addEventListener("click", async () => {
     if (!selectedAlgorithm) {
@@ -163,18 +169,21 @@ document.getElementById("run-btn").addEventListener("click", async () => {
         });
         return;
     }
-
+    
+    toggleRadioButtons(false); 
     console.log("Đã RUN!");
     if (selectedAlgorithm === "value-1") {
         await runDFS(adjacencyList);
         console.log("Chạy xong DFS!");
-    }
-    else if (selectedAlgorithm === "value-2") { // BFS
-        // await runBFS(adjacencyList);
-        // console.log("Chạy xong BFS!");
-    }else if (selectedAlgorithm === "value-2") { // TPLT
+        toggleRadioButtons(true); 
+    } else if (selectedAlgorithm === "value-2") { // BFS
+        await runBFS(adjacencyList);
+        console.log("Chạy xong BFS!");
+        toggleRadioButtons(true); 
+    } else if (selectedAlgorithm === "value-3") { // TPLT
         // await runTPLT(adjacencyList);
         // console.log("Chạy xong TPLT!");
+        toggleRadioButtons(true); 
     }
 });
 
