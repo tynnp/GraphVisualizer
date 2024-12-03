@@ -181,3 +181,30 @@ document.getElementById("submit-graph-btn").addEventListener("click", () => {
     
     document.getElementById("create-graph-modal").style.display = "none";
 });
+
+
+const radioButtons = document.querySelectorAll('.radio-input input');
+const algorithmChoice = document.getElementById('algorithm-choice');
+const stackSection = document.getElementById('stack');
+const queueSection = document.getElementById('queue');
+const tpltSection = document.getElementById('tplt');
+
+radioButtons.forEach(radio => {
+    radio.addEventListener('change', () => {
+        const selectedValue = document.querySelector('.radio-input input:checked').value;
+
+        algorithmChoice.style.display = 'none';
+        stackSection.style.display = 'none';
+        queueSection.style.display = 'none';
+        tpltSection.style.display = 'none';
+
+        // Hiển thị phần tương ứng
+        if (selectedValue === "value-1") {  // DFS
+            stackSection.style.display = 'block';
+        } else if (selectedValue === "value-2") {  // BFS
+            queueSection.style.display = 'block';
+        } else if (selectedValue === "value-3") {  // TPLT
+            tpltSection.style.display = 'block';
+        }
+    });
+});
