@@ -30,9 +30,9 @@ function removeAdjacencyList(nodeId) {
 
 function updateQueue() {
     const queueList = d3.select("#queue-list");
-    queueList.html(""); 
+    queueList.html("");
 
-    queue.forEach((item, index) => {
+    queue.slice().reverse().forEach((item, index) => {
         const li = queueList.append("li")
             .text(item);
 
@@ -49,14 +49,15 @@ function updateQueue() {
 function removeFromQueue() {
     if (queue.length > 0) {
         queue.shift();
-        updateQueue(); 
+
+        updateQueue();
 
         const queueList = d3.select("#queue-list");
-        queueList.selectAll("li").attr("class", "rise-up");
+        queueList.selectAll("li").attr("class", "rise-up"); 
 
         setTimeout(() => {
             queueList.selectAll("li").classed("rise-up", false);
-        }, 500); 
+        }, 500);
     }
 }
 
