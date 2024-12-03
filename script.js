@@ -153,9 +153,29 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.getElementById("run-btn").addEventListener("click", async () => {
+    if (!selectedAlgorithm) {
+        Swal.fire({
+            icon: 'warning',
+            title: 'Chưa chọn thuật toán',
+            text: 'Vui lòng chọn một thuật toán trước khi chạy!',
+            confirmButtonText: 'OK',
+            confirmButtonColor: '#3085d6',
+        });
+        return;
+    }
+
     console.log("Đã RUN!");
-    await runDFS(adjacencyList);
-    console.log("Chạy xong DFS!");
+    if (selectedAlgorithm === "value-1") {
+        await runDFS(adjacencyList);
+        console.log("Chạy xong DFS!");
+    }
+    else if (selectedAlgorithm === "value-2") { // BFS
+        // await runBFS(adjacencyList);
+        // console.log("Chạy xong BFS!");
+    }else if (selectedAlgorithm === "value-2") { // TPLT
+        // await runTPLT(adjacencyList);
+        // console.log("Chạy xong TPLT!");
+    }
 });
 
 document.getElementById("create-graph-btn").addEventListener("click", () => {
@@ -182,6 +202,7 @@ document.getElementById("submit-graph-btn").addEventListener("click", () => {
     document.getElementById("create-graph-modal").style.display = "none";
 });
 
+let selectedAlgorithm = null; // Biến lưu thuật toán đã chọn
 
 const radioButtons = document.querySelectorAll('.radio-input input');
 const algorithmChoice = document.getElementById('algorithm-choice');
@@ -192,6 +213,9 @@ const tpltSection = document.getElementById('tplt');
 radioButtons.forEach(radio => {
     radio.addEventListener('change', () => {
         const selectedValue = document.querySelector('.radio-input input:checked').value;
+
+        // Cập nhật thuật toán đã chọn
+        selectedAlgorithm = selectedValue;
 
         algorithmChoice.style.display = 'none';
         stackSection.style.display = 'none';
