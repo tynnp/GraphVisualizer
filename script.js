@@ -241,3 +241,55 @@ radioButtons.forEach(radio => {
         }
     });
 });
+// Xử lý hiển thị hướng dẫn
+document.addEventListener('DOMContentLoaded', () => {
+    const instructionBtn = document.getElementById('show-instruction-btn');
+    const instructionModal = document.getElementById('instruction-modal');
+    const closeInstruction = document.querySelector('.close-instruction');
+    
+    document.getElementById('instruction-modal').style.display = 'none';
+    instructionBtn.addEventListener('click', () => {
+        instructionModal.style.display = 'block';
+    });
+
+    closeInstruction.addEventListener('click', () => {
+        document.getElementById('instruction-modal').style.display = 'none';
+    });
+    // Đóng modal khi nhấn vào nút đóng
+    document.querySelector('.close-instruction').addEventListener('click', function() {
+        document.querySelector('.instruction-modal').style.display = 'none';
+    });
+    // Đóng modal khi click ngoài
+    window.addEventListener('click', (event) => {
+        if (event.target === instructionModal) {
+            instructionModal.style.display = 'none';
+        }
+    });
+});
+// Xử lý hiển thị modal hướng dẫn
+document.addEventListener('DOMContentLoaded', () => {
+    const instructionBtn = document.getElementById('show-create-graph-instruction-btn'); // Nút hiển thị hướng dẫn
+    const instructionModal = document.querySelector('.graph-instruction-modal'); // Modal hướng dẫn
+    const closeInstructionBtn = document.querySelector('.grap-close-instruction'); // Nút đóng modal
+
+    // Đảm bảo modal không hiển thị khi tải trang
+    instructionModal.style.display = 'none';
+
+    // Mở modal khi nhấn nút hiển thị hướng dẫn
+    instructionBtn.addEventListener('click', () => {
+        instructionModal.style.display = 'flex'; // Sử dụng flex để căn giữa
+    });
+
+    // Đóng modal khi nhấn vào nút đóng
+    closeInstructionBtn.addEventListener('click', () => {
+        instructionModal.style.display = 'none'; // Ẩn modal
+    });
+
+    // Đóng modal khi nhấn ra ngoài modal
+    window.addEventListener('click', (event) => {
+        if (event.target === instructionModal) {
+            instructionModal.style.display = 'none'; // Ẩn modal
+        }
+    });
+});
+

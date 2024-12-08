@@ -65,7 +65,7 @@
 
     <button id="run-btn">Chạy thuật toán</button>
     <button id="create-graph-btn">Tạo đồ thị</button>
-
+    <!--Tạo đồ thi-->
     <div id="create-graph-modal">
         <div class="modal-content">
             <h2>Tạo đồ thị</h2>
@@ -73,12 +73,104 @@
             <input type="text" id="nodes-edges" placeholder="N M">
             <label for="edges">Nhập các cạnh tương ứng:</label>
             <textarea id="edges" placeholder="Mỗi dòng gồm một cạnh tương ứng của 2 đỉnh"></textarea>
+            <button id="show-create-graph-instruction-btn">?</button>
             <div class="button-container">
                 <button id="submit-graph-btn">Tạo</button>
                 <button id="close-modal-btn">Thoát</button>
             </div>
         </div>
     </div>
+    <div class="graph-instruction-modal" style="display: none;">
+        <div class="graph-instruction-modal-content">
+            <span class="grap-close-instruction">&times;</span>
+            <h2>Hướng Dẫn Tạo Đồ Thị</h2>
+            <div class="graph-instruction-details">
+                <p>Để tạo đồ thị, bạn cần nhập các đỉnh và cạnh vào ô nhập liệu. Sau đó, nhấn nút "Tạo" để xem kết quả.</p>
+                <h3>Ví dụ:</h3>
+                <div class="example">
+                    <p>
+                        <strong>Nhập số đỉnh (N) và số cạnh (M):</strong>
+                        <span>3 2</span>
+                    </p>
+                    <p><strong>Nhập các cạnh của đồ thị:</strong></p>
+                    <pre>
+                        1 3
+                        2 3
+                    </pre>
+                </div>
+                <!-- Bảng hướng dẫn -->
+                <table class="instruction-table">
+                    <thead>
+                        <tr>
+                            <th class="table-header">Thành Phần</th>
+                            <th class="table-header">Mô Tả</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="table-cell">Số Đỉnh (N)</td>
+                            <td class="table-cell">Số lượng các đỉnh trong đồ thị.</td>
+                        </tr>
+                        <tr>
+                            <td class="table-cell">Số Cạnh (M)</td>
+                            <td class="table-cell">Số lượng các cạnh kết nối giữa các đỉnh.</td>
+                        </tr>
+                        <tr>
+                            <td class="table-cell">Cạnh</td>
+                            <td class="table-cell">Nhập các cạnh theo định dạng "A B", mỗi cạnh trên một dòng.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- Hướng dẫn chuyển đổi thuật toán-->
+    <div id="instruction-modal" class="instruction-modal">
+        <div class="instruction-modal-content">
+            <span class="close-instruction">&times;</span>
+            <h2>Hướng dẫn chuyển đổi thuật toán</h2>
+            <div class="instruction-details">
+                <ul>
+                    <li>
+                        <strong>DFS (Duyệt sâu):</strong> 
+                        <ul>
+                            <li> 
+                                Sử dụng ngăn xếp (Stack)
+                            </li>
+                            <li>
+                                Ưu tiên đi sâu vào một nhánh trước
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>BFS (Duyệt rộng):</strong>
+                        <ul>
+                            <li> 
+                                Sử dụng hàng đợi (Queue)
+                            </li>
+                            <li>
+                                Duyệt các đỉnh lân cận trước
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Tìm Thành phần Liên thông:</strong>
+                        <ul>
+                            <li> 
+                                Xác định các nhóm đỉnh kết nối với nhau
+                            </li>
+                            <li>
+                                Có thể sử dụng DFS hoặc BFS
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <p>👉 Chọn thuật toán bằng cách nhấp vào các nút tương ứng</p>
+            </div>
+        </div>
+    </div>
+
+    <button id="show-instruction-btn">?</button>
 
     <script type="module" src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
