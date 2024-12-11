@@ -1,5 +1,6 @@
 import { runDFS } from './algorithm/dfs.js';
 import { runBFS } from './algorithm/bfs.js';
+import {runTPLT} from './algorithm/tplt.js';
 let adjacencyList = {};  
 
 export function createGraph(N, edges) {
@@ -181,8 +182,8 @@ document.getElementById("run-btn").addEventListener("click", async () => {
         console.log("Chạy xong BFS!");
         toggleRadioButtons(true); 
     } else if (selectedAlgorithm === "value-3") { // TPLT
-        // await runTPLT(adjacencyList);
-        // console.log("Chạy xong TPLT!");
+         await runTPLT(adjacencyList);
+         console.log("Chạy xong TPLT!");
         toggleRadioButtons(true); 
     }
 });
