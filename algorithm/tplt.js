@@ -106,7 +106,18 @@ async function tplt(nodeId, adjacencyList, visited, component) {
     stack.push(nodeId);
     updateStack(); 
     updateAdjacencyList(nodeId, adjacencyList);
+    await new Promise(resolve => setTimeout(resolve, speed * 1000)); 
+    document.getElementById("create-graph-btn").disabled = true;
 
+    d3.select(`#node-${nodeId} circle`)
+        .transition()
+        .duration(500)
+        .attr("stroke", "limegreen"); 
+
+    d3.select(`#node-${nodeId} text`)
+        .transition()
+        .duration(500)
+        .attr("fill", "limegreen"); 
     for (const neighbor of adjacencyList[nodeId]) {
         if (!visited.has(neighbor)) {
             await new Promise(resolve => setTimeout(() => tplt(neighbor, adjacencyList, visited, component).then(resolve), 1000));
@@ -138,7 +149,7 @@ function updateTPLT(component, checked,index) {
 
   
     const ul = tpltList.select("ul:last-child");
-ul.append("li")
+    ul.append("li")
     .attr("class", "adj-header-box")
     .style("display", "inline-flex")  
     .style("align-items", "center")  
