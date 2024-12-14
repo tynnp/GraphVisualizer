@@ -23,17 +23,17 @@
                 <h2 class="fixed-title">Chọn thuật toán</h2>
                 <p id="algorithm-message">Vui lòng chọn một thuật toán để hiển thị nội dung liên quan 😊.</p>
             </div>
-        
+
             <div id="stack" style="display: none;">
                 <h2 class="fixed-title">Ngăn xếp (Stack)</h2>
                 <ul id="stack-list"></ul>
             </div>
-        
+
             <div id="queue" style="display: none;">
                 <h2 class="fixed-title">Hàng đợi (Queue)</h2>
                 <ul id="queue-list"></ul>
             </div>
-        
+
             <div id="tplt" style="display: none;">
                 <h2 class="fixed-title">Thành phần liên thông</h2>
                 <div id="tplt-list"></div>
@@ -47,22 +47,31 @@
     </div>
 
     <!-- Chọn thuật toán -->
-    <div class="radio-input">
-    <label>
-        <input value="value-1" name="value-radio" id="value-1" type="radio" />
-        <span>DFS</span>
-    </label>
-    <label>
-        <input value="value-2" name="value-radio" id="value-2" type="radio" />
-        <span>BFS</span>
-    </label>
-    <label>
-        <input value="value-3" name="value-radio" id="value-3" type="radio" />
-        <span>Tìm TPLT</span>
-    </label>
-    <span class="selection"></span>
-    </div>
-
+        <div class="radio-input">
+            <label>
+                <input value="value-1" name="value-radio" id="value-1" type="radio" />
+                <span>DFS</span>
+            </label>
+            <label>
+                <input value="value-2" name="value-radio" id="value-2" type="radio" />
+                <span>BFS</span>
+            </label>
+            <label>
+                <input value="value-3" name="value-radio" id="value-3" type="radio" />
+                <span>Tìm TPLT</span>
+            </label>
+            <span class="selection"></span>
+        </div>
+        
+        <!--Chỉnh tốc độ-->
+        <div class="speed-control-container">
+            <div id="speed-control">
+                <label for="speed">Chọn tốc độ: </label>
+                <button id="decrease-speed">-</button>
+                <span id="current-speed">1x</span>
+                <button id="increase-speed">+</button>
+            </div>
+        </div>
     <button id="run-btn">Chạy thuật toán</button>
     <button id="create-graph-btn">Tạo đồ thị</button>
     <!--Tạo đồ thi-->
@@ -85,7 +94,8 @@
             <span class="grap-close-instruction">&times;</span>
             <h2>Hướng Dẫn Tạo Đồ Thị</h2>
             <div class="graph-instruction-details">
-                <p>Để tạo đồ thị, bạn cần nhập các đỉnh và cạnh vào ô nhập liệu. Sau đó, nhấn nút "Tạo" để xem kết quả.</p>
+                <p>Để tạo đồ thị, bạn cần nhập các đỉnh và cạnh vào ô nhập liệu. Sau đó, nhấn nút "Tạo" để xem kết quả.
+                </p>
                 <h3>Ví dụ:</h3>
                 <div class="example">
                     <p>
@@ -132,9 +142,9 @@
             <div class="instruction-details">
                 <ul>
                     <li>
-                        <strong>DFS (Duyệt sâu):</strong> 
+                        <strong>DFS (Duyệt sâu):</strong>
                         <ul>
-                            <li> 
+                            <li>
                                 Sử dụng ngăn xếp (Stack)
                             </li>
                             <li>
@@ -145,7 +155,7 @@
                     <li>
                         <strong>BFS (Duyệt rộng):</strong>
                         <ul>
-                            <li> 
+                            <li>
                                 Sử dụng hàng đợi (Queue)
                             </li>
                             <li>
@@ -156,7 +166,7 @@
                     <li>
                         <strong>Tìm Thành phần Liên thông:</strong>
                         <ul>
-                            <li> 
+                            <li>
                                 Xác định các nhóm đỉnh kết nối với nhau
                             </li>
                             <li>
@@ -170,10 +180,11 @@
         </div>
     </div>
 
+
     <button id="show-instruction-btn">?</button>
 
     <script type="module" src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
-</html> 
+</html>

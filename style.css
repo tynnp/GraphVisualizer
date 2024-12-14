@@ -89,7 +89,13 @@ h1 {
     align-items: center; 
     padding: 10px;
 }
-
+#tplt-list {
+    display: flex;
+    flex-direction: row;  
+    margin:  10px 0;
+    gap: 10px;
+    flex-wrap: wrap; 
+}
 #stack-list li,
 #queue-list li,
 #tplt-list li{
@@ -735,4 +741,55 @@ button:hover {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+}
+.speed-control-container {
+    --container_width: 260px;
+    position: absolute;
+    bottom: 12%;
+    left: 30%;
+    display: flex;
+    align-items: center;
+    border-radius: 30px;
+    background-color: #ffffff;
+    color: #fff;
+    margin: 25px auto;
+    width: var(--container_width);
+    overflow: hidden;
+    border: 2px solid #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+    
+}
+
+#speed-control {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+#speed-control label{
+
+    font-size: 15px;
+}
+#speed-control span{
+    color: black;
+    position: absolute;
+    right: 64px; 
+}
+#current-speed {
+    margin: 0 10px;
+}
+#decrease-speed,
+#increase-speed {
+    color: grey; 
+    right :0;
+    position: absolute; 
+    right: 10px; 
+    border: none; 
+    padding: 5px 10px; 
+    border-radius: 4px; 
+    cursor: pointer; 
+}
+#decrease-speed{
+    position: absolute ; 
+    right: 128px;
 }

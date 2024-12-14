@@ -1,5 +1,5 @@
 let stack = [];
-
+import { speed } from "../script.js";
 function updateAdjacencyList(nodeId, adjacencyList) {
     const list = d3.select("#list");
     const existingEntry = list.select(`#adj-list-${nodeId}`);
@@ -16,7 +16,7 @@ function updateAdjacencyList(nodeId, adjacencyList) {
                 .attr("class", "adj-item new") 
                 .text(neighbor);
 
-            setTimeout(() => item.classed("new", false), 500);
+            setTimeout(() => item.classed("new", false), speed * 1000);
         });
 
         const adjacencyListElement = document.getElementById("adjacency-list");
@@ -103,7 +103,7 @@ async function dfs(nodeId, adjacencyList, visited) {
     updateStack(); 
     updateAdjacencyList(nodeId, adjacencyList); 
 
-    await new Promise(resolve => setTimeout(resolve, 1000)); 
+    await new Promise(resolve => setTimeout(resolve, speed * 1000)); 
     document.getElementById("create-graph-btn").disabled = true;
 
     d3.select(`#node-${nodeId} circle`)
@@ -118,9 +118,9 @@ async function dfs(nodeId, adjacencyList, visited) {
 
     for (const neighbor of adjacencyList[nodeId]) 
         if (!visited.has(neighbor)) 
-            await new Promise(resolve => setTimeout(() => dfs(neighbor, adjacencyList, visited).then(resolve), 1000));
+            await new Promise(resolve => setTimeout(() => dfs(neighbor, adjacencyList, visited).then(resolve), speed * 1000));
 
-    await new Promise(resolve => setTimeout(resolve, 1000)); 
+    await new Promise(resolve => setTimeout(resolve, speed * 1000)); 
 
     stack.pop(); 
     updateStack(); 

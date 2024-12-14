@@ -1,5 +1,5 @@
 let stack = [];
-
+import { speed } from "../script.js";
 function updateAdjacencyList(nodeId, adjacencyList) {
     const list = d3.select("#list");
     const existingEntry = list.select(`#adj-list-${nodeId}`);
@@ -16,7 +16,7 @@ function updateAdjacencyList(nodeId, adjacencyList) {
                 .attr("class", "adj-item new") 
                 .text(neighbor);
 
-            setTimeout(() => item.classed("new", false), 500);
+            setTimeout(() => item.classed("new", false), speed * 1000);
         });
 
         const adjacencyListElement = document.getElementById("adjacency-list");
@@ -43,7 +43,7 @@ function updateStack() {
 
     setTimeout(() => {
         stackList.selectAll("li").classed("new-item", false);
-    }, 1000);
+    }, speed * 1000);
 }
 
 function removeFromStack() {
@@ -56,7 +56,7 @@ function removeFromStack() {
 
         setTimeout(() => {
             stackList.selectAll("li").classed("rise-up", false);
-        }, 500); 
+        }, speed * 1000); 
     }
 }
 
@@ -75,12 +75,11 @@ export async function runTPLT(adjacencyList) {
             const component = [];
             await tplt(nodeId, adjacencyList, visited, component);
             components.push(component);
-            updateTPLT(component);
+            updateTPLT(component, true, components.length - 1);
         }
     }
 
     resetNodes();
-    // Bật lại khi đã chạy xong
     document.getElementById("run-btn").disabled = false;
     document.getElementById("create-graph-btn").disabled = false;
 }
@@ -106,29 +105,15 @@ async function tplt(nodeId, adjacencyList, visited, component) {
     component.push(nodeId); 
     stack.push(nodeId);
     updateStack(); 
-    updateTPLT(component);
     updateAdjacencyList(nodeId, adjacencyList);
 
-    await new Promise(resolve => setTimeout(resolve, 1000)); 
-    document.getElementById("create-graph-btn").disabled = true;
-
-    d3.select(`#node-${nodeId} circle`)
-        .transition()
-        .duration(500)
-        .attr("stroke", "limegreen"); 
-
-    d3.select(`#node-${nodeId} text`)
-        .transition()
-        .duration(500)
-        .attr("fill", "limegreen"); 
     for (const neighbor of adjacencyList[nodeId]) {
         if (!visited.has(neighbor)) {
             await new Promise(resolve => setTimeout(() => tplt(neighbor, adjacencyList, visited, component).then(resolve), 1000));
         }
     }
 
-    await new Promise(resolve => setTimeout(resolve, 1000)); 
-
+    await new Promise(resolve => setTimeout(resolve, speed * 1000)); 
     stack.pop(); 
     updateStack(); 
     removeAdjacencyList(nodeId);
@@ -139,22 +124,37 @@ async function tplt(nodeId, adjacencyList, visited, component) {
     }
 }
 
-function updateTPLT(component) {
+function updateTPLT(component, checked,index) {
     const tpltList = d3.select("#tplt-list");
-        tpltList.html(""); 
 
-    component.forEach((nodeId, index) => {
-        const li = tpltList.append("li")
-            .text(`Đỉnh: ${nodeId}`); 
-        if (index === component.length - 1) {
-            li.attr("class", "new-item");
-        }
+    // Khi `checked = true`, tạo một danh sách mới và cách xuống dưới
+    if (checked) {
+        tpltList.append("ul")
+            .style("display", "flex")
+            .style("flex-direction", "row")
+            .style("gap", "5px") 
+            .style("margin-top", "10px")
+    }
+
+  
+    const ul = tpltList.select("ul:last-child");
+ul.append("li")
+    .attr("class", "adj-header-box")
+    .style("display", "inline-flex")  
+    .style("align-items", "center")  
+    .html(`TPLT <span>${index + 1}</span>`);
+    component.forEach((nodeId) => {
+        ul.append("li")
+            .text(`${nodeId}`)
+            .attr("class", "new-item");
 
         setTimeout(() => {
-            tpltList.selectAll("li").classed("new-item", false);
-        }, 1000);
+            ul.selectAll("li").classed("new-item", false);
+        }, speed * 1000);
     });
 }
+
+
 
 function resetNodes() {
     d3.selectAll("circle")

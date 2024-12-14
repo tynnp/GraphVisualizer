@@ -1,5 +1,5 @@
 let queue = [];
-
+import { speed } from "../script.js";
 function updateAdjacencyList(nodeId, adjacencyList) {
     const list = d3.select("#list");
     const existingEntry = list.select(`#adj-list-${nodeId}`);
@@ -16,7 +16,7 @@ function updateAdjacencyList(nodeId, adjacencyList) {
                 .attr("class", "adj-item new") 
                 .text(neighbor);
 
-            setTimeout(() => item.classed("new", false), 500);
+            setTimeout(() => item.classed("new", false), speed * 1000);
         });
 
         const adjacencyListElement = document.getElementById("adjacency-list");
@@ -29,6 +29,7 @@ function removeAdjacencyList(nodeId) {
 }
 
 function updateQueue() {
+    console.log(`Tốc độ hiện tại: ${speed}`);
     const queueList = d3.select("#queue-list");
     queueList.html("");
 
@@ -43,7 +44,7 @@ function updateQueue() {
 
     setTimeout(() => {
         queueList.selectAll("li").classed("new-item", false);
-    }, 1000);
+    }, speed * 1000);
 }
 
 function removeFromQueue() {
@@ -57,7 +58,7 @@ function removeFromQueue() {
 
         setTimeout(() => {
             queueList.selectAll("li").classed("rise-up", false);
-        }, 500);
+        }, speed * 1000);
     }
 }
 
@@ -100,7 +101,7 @@ async function bfs(startNodeId, adjacencyList, visited) {
         .duration(500)
         .attr("fill", "dodgerblue");
 
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    await new Promise(resolve => setTimeout(resolve, speed * 1000));
 
     while (queue.length > 0) {
         const nodeId = queue[0];
@@ -116,7 +117,7 @@ async function bfs(startNodeId, adjacencyList, visited) {
             .duration(500)
             .attr("fill", "limegreen");
 
-        await new Promise(resolve => setTimeout(resolve, 1000));
+        await new Promise(resolve => setTimeout(resolve, speed * 1000));
 
         for (const neighbor of adjacencyList[nodeId]) {
             if (!visited.has(neighbor)) {
@@ -137,7 +138,7 @@ async function bfs(startNodeId, adjacencyList, visited) {
                     .duration(500)
                     .attr("fill", "dodgerblue");
 
-                await new Promise(resolve => setTimeout(resolve, 1000));
+                await new Promise(resolve => setTimeout(resolve, speed * 1000));
 
                 d3.select(`#node-${neighbor} circle`)
                     .transition()
@@ -149,13 +150,13 @@ async function bfs(startNodeId, adjacencyList, visited) {
                     .duration(500)
                     .attr("fill", "limegreen");
 
-                await new Promise(resolve => setTimeout(resolve, 1000));
+                await new Promise(resolve => setTimeout(resolve, speed * 1000));
             }
         }
 
         removeFromQueue();
         removeAdjacencyList(nodeId);
-        await new Promise(resolve => setTimeout(resolve, 1000));
+        await new Promise(resolve => setTimeout(resolve, speed * 1000));
     }
 }
 

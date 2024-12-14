@@ -293,4 +293,36 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+let speed = 1; 
 
+document.addEventListener('DOMContentLoaded', () => {
+    const decreaseSpeedButton = document.getElementById('decrease-speed');
+    const increaseSpeedButton = document.getElementById('increase-speed');
+    const currentSpeedElement = document.getElementById('current-speed');
+
+    function getCurrentSpeed() {
+        const speedText = currentSpeedElement.textContent; 
+        console.log("Current Speed Text: ", speedText); 
+        return parseFloat(speedText.replace('x', '')); 
+    }
+
+    function setCurrentSpeed(newSpeed) {
+        currentSpeedElement.textContent = `${newSpeed}x`;
+    }
+
+    setCurrentSpeed(speed); 
+
+    decreaseSpeedButton.addEventListener('click', () => {
+        if (speed > 0.5) {
+            speed -= 0.5; 
+            setCurrentSpeed(speed); 
+        }
+    });
+
+    increaseSpeedButton.addEventListener('click', () => {
+        speed += 0.5; 
+        setCurrentSpeed(speed); 
+    });
+});
+
+export { speed };
