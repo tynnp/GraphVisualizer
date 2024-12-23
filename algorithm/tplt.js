@@ -16,7 +16,7 @@ function updateAdjacencyList(nodeId, adjacencyList) {
                 .attr("class", "adj-item new") 
                 .text(neighbor);
 
-            setTimeout(() => item.classed("new", false), speed * 1000);
+            setTimeout(() => item.classed("new", false), 1000/speed);
         });
 
         const adjacencyListElement = document.getElementById("adjacency-list");
@@ -106,7 +106,7 @@ async function tplt(nodeId, adjacencyList, visited, component) {
     stack.push(nodeId);
     updateStack(); 
     updateAdjacencyList(nodeId, adjacencyList);
-    await new Promise(resolve => setTimeout(resolve, speed * 1000)); 
+    await new Promise(resolve => setTimeout(resolve, 1000/speed)); 
     document.getElementById("create-graph-btn").disabled = true;
 
     d3.select(`#node-${nodeId} circle`)
@@ -124,7 +124,7 @@ async function tplt(nodeId, adjacencyList, visited, component) {
         }
     }
 
-    await new Promise(resolve => setTimeout(resolve, speed * 1000)); 
+    await new Promise(resolve => setTimeout(resolve, 1000/speed)); 
     stack.pop(); 
     updateStack(); 
     removeAdjacencyList(nodeId);
@@ -161,7 +161,7 @@ function updateTPLT(component, checked,index) {
 
         setTimeout(() => {
             ul.selectAll("li").classed("new-item", false);
-        }, speed * 1000);
+        },1000/speed);
     });
 }
 
