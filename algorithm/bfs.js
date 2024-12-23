@@ -1,5 +1,31 @@
 let queue = [];
 import { speed } from "../script.js";
+
+function updateVisitedList(nodeId) {
+    const visitedList = document.getElementById("visited-list");
+
+    const li = document.createElement("li");
+
+    const visitedLabel = document.createElement("span");
+    visitedLabel.className = "visited-header-box";
+    visitedLabel.textContent = "Đã thăm";
+
+    const visitedNode = document.createElement("span");
+    visitedNode.className = "visited-item";
+    visitedNode.textContent = `[${nodeId}]`;
+
+    li.appendChild(visitedLabel);
+    li.appendChild(visitedNode);
+    visitedList.appendChild(li);
+
+    visitedList.scrollTop = visitedList.scrollHeight;
+}
+
+function clearVisitedList() {
+    const visitedList = document.getElementById("visited-list");
+    visitedList.innerHTML = "";
+}
+
 function updateAdjacencyList(nodeId, adjacencyList) {
     const list = d3.select("#list");
     const existingEntry = list.select(`#adj-list-${nodeId}`);
@@ -74,10 +100,13 @@ export async function runBFS(adjacencyList) {
 
         if (!visited.has(nodeId)) {
             console.log(`${nodeId} chưa được thăm!`);
+            clearVisitedList();
             await bfs(nodeId, adjacencyList, visited);
         }
     }
+
     resetNodes();
+    clearVisitedList();
 
     // Bật lại khi đã chạy xong
     document.getElementById("run-btn").disabled = false;
@@ -90,7 +119,9 @@ async function bfs(startNodeId, adjacencyList, visited) {
     updateQueue();
 
     visited.add(startNodeId);
+    updateVisitedList(startNodeId);
     updateAdjacencyList(startNodeId, adjacencyList);
+
     d3.select(`#node-${startNodeId} circle`)
         .transition()
         .duration(500)
@@ -126,6 +157,7 @@ async function bfs(startNodeId, adjacencyList, visited) {
 
                 queue.push(neighbor);
                 updateQueue();
+                updateVisitedList(neighbor);
                 updateAdjacencyList(neighbor, adjacencyList);
 
                 d3.select(`#node-${neighbor} circle`)

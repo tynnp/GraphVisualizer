@@ -160,6 +160,9 @@ function toggleRadioButtons(enabled) {
 }
 
 document.getElementById("run-btn").addEventListener("click", async () => {
+    const visitedList = document.getElementById("visited-list");
+    visitedList.innerHTML = "";
+
     if (!selectedAlgorithm) {
         Swal.fire({
             icon: 'warning',
@@ -172,6 +175,7 @@ document.getElementById("run-btn").addEventListener("click", async () => {
     }
     
     toggleRadioButtons(false); 
+
     console.log("Đã RUN!");
     if (selectedAlgorithm === "value-1") {
         await runDFS(adjacencyList);
