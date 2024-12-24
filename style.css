@@ -794,11 +794,18 @@ button:hover {
     right: 128px;
 }
 
+#statue-container {
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-end; 
+    height: 100vh; 
+    margin-right: 4%; 
+    margin-bottom: 5%; 
+}
+
 #visited {
-    position: fixed;
-    bottom: 5%;
-    right: 5%;
-    width: 20%;
+    position: relative; 
+    width: 25%;
     height: 20%;
     max-height: 300px;
     background: #fff;
@@ -807,9 +814,7 @@ button:hover {
     padding: 10px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
     overflow-y: auto;
-    z-index: 1000;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    overflow: hidden;
+    z-index: 1; 
 }
 
 #visited:hover {
@@ -819,10 +824,12 @@ button:hover {
 
 #visited-list {
     list-style-type: none;
-    height: calc(100% - 50px);
+    height: 100%;
     overflow-y: auto;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 #visited-list li {
@@ -878,4 +885,3 @@ button:hover {
     color: white;
     transform: scale(1.05);
 }
-
