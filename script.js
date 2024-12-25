@@ -160,9 +160,6 @@ function toggleRadioButtons(enabled) {
 }
 
 document.getElementById("run-btn").addEventListener("click", async () => {
-    const visitedList = document.getElementById("visited-list");
-    visitedList.innerHTML = "";
-
     if (!selectedAlgorithm) {
         Swal.fire({
             icon: 'warning',
