@@ -510,7 +510,7 @@ button:hover {
 
 .radio-input label {
     width: 100%;
-    padding: 8px;
+    padding: 10px;
     cursor: pointer;
     display: flex;
     justify-content: center;
@@ -522,6 +522,7 @@ button:hover {
     color: #777;
     border-radius: 25px;
     transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    transform: translateY(2px);
 }
   
 .radio-input label:hover {
