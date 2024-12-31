@@ -49,7 +49,7 @@ function updateStack() {
 
 function removeFromStack() {
     if (stack.length > 0) {
-        stack.pop(); 
+        stack.shift(); 
         updateStack(); 
 
         const stackList = d3.select("#stack-list");

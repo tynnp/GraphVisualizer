@@ -138,17 +138,53 @@
     <div id="instruction-modal" class="instruction-modal">
         <div class="instruction-modal-content">
             <span class="close-instruction">&times;</span>
-            <h2>Hướng dẫn chuyển đổi thuật toán</h2>
+            <h2>Hướng dẫn</h2>
             <div class="instruction-details">
                 <ul>
+                    <li>
+                        <strong>Đồ thị(Graph):</strong>
+                        <ul>
+                            <li>
+                                Bảng đồ thị (Graph) là nơi thể hiện các các đồ thị bao gồm các node được nối với nhau bởi các cạnh.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Chọn thuật toán:</strong>
+                        <ul>
+                            <li>
+                                Bảng chọn thuật toán là nơi bạn có thể thấy cách mà một thuật toán hoạt động như thế nào.
+                            </li>
+                            <li>
+                                Chọn thuật toán DFS thì bảng sẽ đổi thành Ngăn xếp (Stack).
+                            </li>
+                            <li>
+                                Chọn thuật toán BFS thì bảng sẽ đổi thành Hàng đợi (Queue).
+                            </li>
+                            <li>
+                                Chọn thuật toán Tìm TPLT thì bảng sẽ đổi thành Thành phần liên thông.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Danh sách kề (Adjacency List):</strong>
+                        <ul>
+                            <li>
+                                Bảng danh sách kề là nơi thể hiện các node và các node kề với node ấy.
+                            </li>
+                        </ul>
+                    </li>
                     <li>
                         <strong>DFS (Duyệt sâu):</strong>
                         <ul>
                             <li>
-                                Sử dụng ngăn xếp (Stack)
+                                Sử dụng ngăn xếp (Stack).
                             </li>
                             <li>
-                                Ưu tiên đi sâu vào một nhánh trước
+                                Ưu tiên đi sâu vào một nhánh trước.
+                            </li>
+                            <li>
+                                Khi đến đỉnh chưa thăm, thêm vào ngăn xếp và đánh dấu đã thăm.
                             </li>
                         </ul>
                     </li>
@@ -156,10 +192,13 @@
                         <strong>BFS (Duyệt rộng):</strong>
                         <ul>
                             <li>
-                                Sử dụng hàng đợi (Queue)
+                                Sử dụng hàng đợi (Queue).
                             </li>
                             <li>
-                                Duyệt các đỉnh lân cận trước
+                                Duyệt các đỉnh lân cận trước.
+                            </li>
+                            <li>
+                                Khi đến đỉnh chưa thăm, thêm vào hàng đợi và đánh dấu đã thăm.
                             </li>
                         </ul>
                     </li>
@@ -167,15 +206,34 @@
                         <strong>Tìm Thành phần Liên thông:</strong>
                         <ul>
                             <li>
-                                Xác định các nhóm đỉnh kết nối với nhau
+                                Xác định các nhóm đỉnh kết nối với nhau.
                             </li>
                             <li>
-                                Có thể sử dụng DFS hoặc BFS
+                                Có thể sử dụng DFS hoặc BFS.
                             </li>
                         </ul>
                     </li>
+                    <strong>👉 Chọn thuật toán bằng cách nhấp vào các nút tương ứng</strong>
+                    <p></p>
+                    <strong>Tốc độ của thuật toán:</strong>
+                    <ul>
+                        <li>
+                            Thay đổi tốc độ duyệt node của đồ thị bằng cách ấn các nút "+" và "-".
+                        </li>
+                    </ul>
+                    <strong>Chạy thuật toán:</strong>
+                    <ul>
+                        <li>
+                            Ấn nút "Chạy thuật toán" để chạy thuật toán.
+                        </li>
+                    </ul>
+                    <strong>Tạo đồ thị:</strong>
+                    <ul>
+                        <li>
+                            Ấn nút "Tạo đồ thị" để mở giao diện tạo đồ thị.
+                        </li>
+                    </ul>
                 </ul>
-                <p>👉 Chọn thuật toán bằng cách nhấp vào các nút tương ứng</p>
             </div>
         </div>
     </div>

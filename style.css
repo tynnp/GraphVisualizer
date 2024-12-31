@@ -620,22 +620,23 @@ button:hover {
     justify-content: center;
     align-items: center;
     position: fixed;
-    text-align: left;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 1000;
+    overflow: hidden; /* Ngăn cuộn toàn trang */
 }
 
-/* Nội dung modal */
 .graph-instruction-modal-content {
     background-color: #fff;
     border-radius: 8px;
     padding: 20px;
     width: 80%;
     max-width: 600px;
+    max-height: 80vh; /* Giới hạn chiều cao */
+    overflow-y: scroll; /* Luôn hiển thị thanh cuộn */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -708,17 +709,18 @@ button:hover {
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
     background-color: rgba(0,0,0,0.4);
 }
 
 .instruction-modal-content {
     background-color: #fefefe;
-    margin: 10% auto;
+    margin: 5% auto;
     padding: 20px;
     border-radius: 10px;
     width: 70%;
     max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
     position: relative;
 }
 
@@ -728,6 +730,9 @@ button:hover {
     font-size: 28px;
     font-weight: bold;
     cursor: pointer;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .close-instruction:hover {
