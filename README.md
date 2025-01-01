@@ -10,5 +10,5 @@ Với giao diện trực quan và sinh động của chương trình không ch�
 
 Hình ảnh chương trình:  
 <p align="center">  
-  <img src="" alt="Hình ảnh chương trình"/>
+  <img src="image/HinhMinhHoa.png" alt="Hình ảnh chương trình"/>
 </p>    
